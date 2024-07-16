@@ -44,7 +44,8 @@ int main(int ac, char **av)
 			}
 			if (done == 0)
 			{
-				dprintf(2, "L%d: unknown instruction <opcode>\n", lines);
+				dprintf(2, "L%d: unknown instruction %s\n", lines, the_code);
+				free(head);
 				free(the_code);
 				fclose(fd);
 				exit(EXIT_FAILURE);
