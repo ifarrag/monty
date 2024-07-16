@@ -34,6 +34,7 @@ int main(int ac, char **av)
 		check_line(lineStr);
 		if (the_code != NULL)
 		{
+			done = 0;
 			for (i = 0; ops[i].opcode != NULL; i++)
 			{
 				if (strcmp(ops[i].opcode, the_code) == 0)
@@ -45,9 +46,18 @@ int main(int ac, char **av)
 			if (done == 0)
 			{
 				dprintf(2, "L%d: unknown instruction %s\n", lines, the_code);
-				free(head);
 				free(the_code);
 				fclose(fd);
+				free(lineStr);
+				while (head->prev != NULL)
+					head = head->prev;
+				temp = head;
+				while (temp != NULL)
+				{
+					temp = head->next;
+					free(head);
+					head = temp;
+				}
 				exit(EXIT_FAILURE);
 			}
 			free(the_code);
