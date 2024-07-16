@@ -50,8 +50,8 @@ int main(int ac, char **av)
 				exit(EXIT_FAILURE);
 			}
 			free(the_code);
-			lines++;
 		}
+		lines++;
 	}
 	free(lineStr);
 	while (head->prev != NULL)
