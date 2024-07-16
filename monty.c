@@ -64,4 +64,5 @@ int main(int ac, char **av)
 		head = temp;
 	}
 	fclose(fd);
+	return (0);
 }
